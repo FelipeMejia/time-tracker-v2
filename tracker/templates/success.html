@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Time Entry Saved</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background: white;
+        padding: 2rem 3rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .card h1 {
+        margin-bottom: 1rem;
+        color: #4caf50;
+      }
+
+      .card p {
+        margin-bottom: 1.5rem;
+        color: #555;
+      }
+
+      .card a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .card a:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>✅ Time Entry Logged!</h1>
+      <p>Your work session has been saved successfully.</p>
+      <a href="{% url 'log_time_entry' %}">Log another</a>
+    </div>
+  </body>
+</html>

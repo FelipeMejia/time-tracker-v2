@@ -75,8 +75,12 @@ WSGI_APPLICATION = "time_tracker_backend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "timetracker",
+        "USER": "felipe",
+        "PASSWORD": "felipe",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 

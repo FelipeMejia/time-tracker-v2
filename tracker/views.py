@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import TimeEntryForm
-from .models import TimeEntry
-from datetime import datetime
-from collections import defaultdict
+from .utils import get_weekly_summary
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -22,23 +21,10 @@ def success_view(request):
 
 
 def weekly_summary_view(request):
-    entries = TimeEntry.objects.all().order_by("date")
-    summary = defaultdict(lambda: defaultdict(int))
-
-    for entry in entries:
-        week_number = entry.date.isocalendar()[1]
-        summary[week_number][entry.project_name] += entry.duration_minutes
-
-    summary_data = []
-    for week, projects in summary.items():
-        summary_data.append(
-            {
-                "week": week,
-                "projects": [
-                    {"name": name, "duration": duration}
-                    for name, duration in projects.items()
-                ],
-            }
-        )
-
+    summary_data = get_weekly_summary()
     return render(request, "weekly_summary.html", {"summary_data": summary_data})
+
+
+def weekly_summary_api_review(request):
+    summary_data = get_weekly_summary()
+    return JsonResponse({"summary_data": summary_data})

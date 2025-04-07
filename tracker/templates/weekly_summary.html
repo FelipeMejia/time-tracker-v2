@@ -1,0 +1,13 @@
+<div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">
+    Weekly Summary
+  </h1>
+  {% for item in summary_data %}
+  <h2>Week {{ item.week }}</h2>
+  <ul>
+    {% for project in item.projects %}
+    <li>{{ project.name }}: {{ project.duration }} minutes</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</div>
